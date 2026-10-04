@@ -46,30 +46,40 @@ def test_invalid_face_raises(solved_cube: RubiksCube) -> None:
         solved_cube.rotate_face("X")
 
 
-def test_from_string_roundtrip(solved_cube: RubiksCube) -> None:
+def test_load_from_string_roundtrip(solved_cube: RubiksCube) -> None:
     text = solved_cube.to_string()
-    assert RubiksCube.from_string(text) == solved_cube
+    clone = RubiksCube()
+    clone.load_from_string(text)
+    assert clone == solved_cube
 
 
-def test_from_string_rejects_wrong_face_count() -> None:
+def test_load_from_string_rejects_wrong_face_count() -> None:
     with pytest.raises(ValueError):
-        RubiksCube.from_string("WWW/WWW")
+        RubiksCube().load_from_string("WWW/WWW")
 
 
-def test_from_string_rejects_invalid_symbol() -> None:
+def test_load_from_string_rejects_invalid_symbol() -> None:
     bad = "WWWWWWWWW/" + "X" * 9 + "/" + "/".join(["WWWWWWWWW"] * 4)
     with pytest.raises(ValueError):
-        RubiksCube.from_string(bad)
+        RubiksCube().load_from_string(bad)
+
+
+def test_load_from_string_rejects_wrong_cell_count() -> None:
+    bad = "WWWWWWWW/" + "/".join(["WWWWWWWWW"] * 5)
+    with pytest.raises(ValueError):
+        RubiksCube().load_from_string(bad)
 
 
 def test_equality_and_hash(solved_cube: RubiksCube) -> None:
-    clone = RubiksCube.from_string(solved_cube.to_string())
+    clone = RubiksCube()
+    clone.load_from_string(solved_cube.to_string())
     assert solved_cube == clone
     assert hash(solved_cube) == hash(clone)
 
 
 def test_not_equal_after_rotation(solved_cube: RubiksCube) -> None:
-    other = RubiksCube.from_string(solved_cube.to_string())
+    other = RubiksCube()
+    other.load_from_string(solved_cube.to_string())
     other.rotate_face("U")
     assert solved_cube != other
 
@@ -134,12 +144,6 @@ def test_rotate_all_faces_keeps_solvable(solved_cube: RubiksCube) -> None:
         for _ in range(4):
             solved_cube.rotate_face(face)
     assert solved_cube.is_solved()
-
-
-def test_from_string_rejects_wrong_cell_count() -> None:
-    bad = "WWWWWWWW/" + "/".join(["WWWWWWWWW"] * 5)
-    with pytest.raises(ValueError):
-        RubiksCube.from_string(bad)
 
 
 def test_read_strips_rejects_unknown_face(solved_cube: RubiksCube) -> None:

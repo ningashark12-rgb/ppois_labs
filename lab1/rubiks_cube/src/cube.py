@@ -12,12 +12,7 @@ from enum import Enum
 
 MOVE_FACES = ("U", "D", "F", "B", "L", "R")
 CUBE_SIZE = 3
-
-# Number of times a single clockwise rotation must be applied to a face
-# to return the cube to its previous state.
 FULL_TURN = 4
-
-# Valid characters that may appear in a serialized cube string.
 VALID_SYMBOLS = frozenset("WYROBG")
 
 
@@ -35,7 +30,7 @@ class Color(Enum):
 class RubiksCube:
     """Represents a standard 3x3x3 Rubik's Cube.
 
-    A cube is stored as six faces (U, D, F, B, L, R).  Each face is a
+    A cube is stored as six faces (U, D, F, B, L, R). Each face is a
     2D list of `Color` values, indexed as `face[row][col]`.
     """
 
@@ -56,29 +51,26 @@ class RubiksCube:
     # Construction helpers
     # ------------------------------------------------------------------
 
-    @staticmethod
-    def _create_face(color: Color) -> list[list[Color]]:
+    def _create_face(self, color: Color) -> list[list[Color]]:
         """Return a fresh `SIZE x SIZE` face filled with `color`."""
         return [
-            [color for _ in range(RubiksCube.SIZE)]
-            for _ in range(RubiksCube.SIZE)
+            [color for _ in range(self.SIZE)]
+            for _ in range(self.SIZE)
         ]
 
-    @classmethod
-    def from_string(cls, text: str) -> "RubiksCube":
-        """Build a cube from a serialized string (see `to_string`).
+    def load_from_string(self, text: str) -> None:
+        """Load this cube's state from a serialized string.
 
         The format is six faces separated by `/`, each face being 9
         characters (row-major) taken from the set of color symbols.
         """
-        cube = cls()
         faces = text.strip().split("/")
         if len(faces) != len(MOVE_FACES):
             raise ValueError(
                 f"Expected {len(MOVE_FACES)} faces, got {len(faces)}"
             )
 
-        expected_cells = cls.SIZE * cls.SIZE
+        expected_cells = self.SIZE * self.SIZE
         for name, block in zip(MOVE_FACES, faces):
             if len(block) != expected_cells:
                 raise ValueError(
@@ -87,19 +79,17 @@ class RubiksCube:
             if any(symbol not in VALID_SYMBOLS for symbol in block):
                 raise ValueError(f"Face {name} contains invalid symbols")
 
-            cube._faces[name] = [
-                [Color(block[row * cls.SIZE + col]) for col in range(cls.SIZE)]
-                for row in range(cls.SIZE)
+            self._faces[name] = [
+                [Color(block[row * self.SIZE + col]) for col in range(self.SIZE)]
+                for row in range(self.SIZE)
             ]
-
-        return cube
 
     # ------------------------------------------------------------------
     # Serialization
     # ------------------------------------------------------------------
 
     def to_string(self) -> str:
-        """Serialize the cube to a string usable with `from_string`."""
+        """Serialize the cube to a string usable with `load_from_string`."""
         blocks = []
         for name in MOVE_FACES:
             block = "".join(
@@ -131,8 +121,7 @@ class RubiksCube:
                 return False
         return True
 
-    @staticmethod
-    def _validate_position(face: str, row: int, col: int) -> None:
+    def _validate_position(self, face: str, row: int, col: int) -> None:
         if face not in MOVE_FACES:
             raise ValueError(f"Unknown face '{face}'")
         if not 0 <= row < CUBE_SIZE or not 0 <= col < CUBE_SIZE:
@@ -143,7 +132,7 @@ class RubiksCube:
     # ------------------------------------------------------------------
 
     def rotate_face(self, face: str, times: int = 1) -> None:
-        """Rotate a face clockwise `times` times (negative = counter-clockwise)."""
+        """Rotate a face clockwise `times` times (negative = counter)."""
         if face not in MOVE_FACES:
             raise ValueError(f"Unknown face '{face}'")
 
@@ -156,8 +145,8 @@ class RubiksCube:
         self._faces[face] = self._rotate_grid_clockwise(self._faces[face])
         self._rotate_adjacent_strips(face)
 
-    @staticmethod
     def _rotate_grid_clockwise(
+        self,
         grid: list[list[Color]],
     ) -> list[list[Color]]:
         """Return a new grid rotated 90 degrees clockwise."""
@@ -169,9 +158,6 @@ class RubiksCube:
 
     def _rotate_adjacent_strips(self, face: str) -> None:
         """Rotate the four strips of the cube that touch `face`."""
-        # Each entry: (face_name, row_or_col_index, orientation)
-        # For simplicity we read the four relevant strips, rotate the
-        # list of strips clockwise, and write them back.
         strips = self._read_strips(face)
         rotated = [strips[-1]] + strips[:-1]
         self._write_strips(face, rotated)
@@ -291,9 +277,11 @@ class RubiksCube:
         return self._faces == other._faces
 
     def __hash__(self) -> int:
-        # Faces are nested lists, so we must convert to a hashable form.
         flat = tuple(
-            cell.value for name in MOVE_FACES for row in self._faces[name] for cell in row
+            cell.value
+            for name in MOVE_FACES
+            for row in self._faces[name]
+            for cell in row
         )
         return hash(flat)
 
@@ -309,7 +297,9 @@ class RubiksCube:
         return f"RubiksCube({self.to_string()!r})"
 
     def __copy__(self) -> "RubiksCube":
-        return RubiksCube.from_string(self.to_string())
+        clone = RubiksCube()
+        clone.load_from_string(self.to_string())
+        return clone
 
     def __deepcopy__(self, memo: dict) -> "RubiksCube":
         return self.__copy__()

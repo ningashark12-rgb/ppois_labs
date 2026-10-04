@@ -1,6 +1,6 @@
 """Console interface for the Rubik's Cube domain.
 
-This module only handles user interaction.  All cube logic lives in
+This module only handles user interaction. All cube logic lives in
 `cube.py`; all persistence lives in `cube_io.py`.
 """
 
@@ -9,7 +9,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from .cube import MOVE_FACES, RubiksCube
-from .cube_io import CubeIO
+from .cube_io import load_cube, save_cube
 
 MENU_OPTIONS = (
     ("1", "Show cube"),
@@ -58,7 +58,7 @@ def _shuffle_menu(cube: RubiksCube) -> None:
 
 def _save_menu(cube: RubiksCube) -> None:
     path = input("Path to save: ").strip()
-    CubeIO.save(cube, path)
+    save_cube(cube, path)
     print(f"Saved to {path}.")
 
 
@@ -67,7 +67,7 @@ def _load_menu(cube: RubiksCube) -> RubiksCube:
     if not Path(path).exists():
         print("File does not exist.")
         return cube
-    return CubeIO.load(path)
+    return load_cube(path)
 
 
 def _print_menu() -> None:
