@@ -3,16 +3,22 @@
 venv/
 env/
 
-# Python bytecode
+# Python bytecode / cache
 __pycache__/
+**/__pycache__/
 *.py[cod]
+*.cpython-*.pyc
+*.pytest-*.pyc
 
 # pytest / coverage
 .pytest_cache/
+**/.pytest_cache/
 .coverage
 .coverage.*
-htmlcov/
 coverage.xml
+htmlcov/
+**/coverage
+**/.coverage
 
 # Build artifacts
 build/
@@ -21,9 +27,11 @@ dist/
 
 # Generated docs
 docs/
+**/docs/
 
 # ruff cache
 .ruff_cache/
+**/.ruff_cache/
 
 # IDE / editors
 .vscode/
