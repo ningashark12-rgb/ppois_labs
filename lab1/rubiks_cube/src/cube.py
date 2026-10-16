@@ -65,6 +65,12 @@ class RubiksCube:
         characters (row-major) taken from the set of color symbols.
         """
         faces = text.strip().split("/")
+        self._validate_serialized(faces)
+        for name, block in zip(MOVE_FACES, faces):
+            self._faces[name] = self._parse_face(block)
+
+    def _validate_serialized(self, faces: list[str]) -> None:
+        """Raise ValueError if the faces do not match the expected shape."""
         if len(faces) != len(MOVE_FACES):
             raise ValueError(
                 f"Expected {len(MOVE_FACES)} faces, got {len(faces)}"
@@ -79,10 +85,15 @@ class RubiksCube:
             if any(symbol not in VALID_SYMBOLS for symbol in block):
                 raise ValueError(f"Face {name} contains invalid symbols")
 
-            self._faces[name] = [
-                [Color(block[row * self.SIZE + col]) for col in range(self.SIZE)]
-                for row in range(self.SIZE)
+    def _parse_face(self, block: str) -> list[list[Color]]:
+        """Convert a 9-character block into a 3x3 grid of colors."""
+        return [
+            [
+                Color(block[row * self.SIZE + col])
+                for col in range(self.SIZE)
             ]
+            for row in range(self.SIZE)
+        ]
 
     # ------------------------------------------------------------------
     # Serialization
@@ -163,7 +174,13 @@ class RubiksCube:
         self._write_strips(face, rotated)
 
     def _read_strips(self, face: str) -> list[list[Color]]:
-        """Read the four strips around `face` in clockwise order."""
+        """Read the four strips around `face` in clockwise order.
+
+        This is a single if/elif chain of six symmetric branches (one
+        per face). Splitting them into six separate methods would add
+        indirection without improving clarity, so they are kept
+        together.
+        """
         if face == "U":
             return [
                 self._faces["B"][0][:],
@@ -209,7 +226,11 @@ class RubiksCube:
         raise ValueError(f"Unknown face '{face}'")
 
     def _write_strips(self, face: str, strips: list[list[Color]]) -> None:
-        """Write the four rotated strips back around `face`."""
+        """Write the four rotated strips back around `face`.
+
+        Kept as one method (rather than six per-face helpers) so the
+        symmetric branches can be compared side by side.
+        """
         if face == "U":
             self._faces["B"][0] = strips[0][:]
             self._faces["R"][0] = strips[1][:]
