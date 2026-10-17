@@ -38,11 +38,11 @@ jobs:
 
       - name: Build docs (Rubik's Cube)
         working-directory: lab1/rubiks_cube
-        run: pdoc src/cube.py src/cube_io.py src/main.py -o docs
+        run: pdoc src -o docs
 
       - name: Build docs (Post Machine)
         working-directory: lab1/post_machine
-        run: pdoc src/tape.py src/rule.py src/program.py src/machine.py src/machine_io.py src/main.py -o docs
+        run: pdoc src -o docs
 
       - name: Build release artifact
         run: |
