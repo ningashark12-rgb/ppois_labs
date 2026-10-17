@@ -36,14 +36,6 @@ jobs:
         run: |
           pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
 
-      - name: Build docs (Rubik's Cube)
-        working-directory: lab1/rubiks_cube
-        run: pdoc src -o docs
-
-      - name: Build docs (Post Machine)
-        working-directory: lab1/post_machine
-        run: pdoc src -o docs
-
       - name: Build release artifact
         run: |
           mkdir -p dist
