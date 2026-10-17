@@ -26,30 +26,45 @@ jobs:
       - name: Lint with ruff
         run: ruff check .
 
-      - name: Run tests with coverage
+      - name: Run Rubik's Cube tests
         working-directory: lab1/rubiks_cube
         run: |
           pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
 
-      - name: Build docs
+      - name: Run Post Machine tests
+        working-directory: lab1/post_machine
+        run: |
+          pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
+
+      - name: Build docs (Rubik's Cube)
         working-directory: lab1/rubiks_cube
+        run: pdoc src -o docs
+
+      - name: Build docs (Post Machine)
+        working-directory: lab1/post_machine
         run: pdoc src -o docs
 
       - name: Build release artifact
         run: |
           mkdir -p dist
-          cp -r lab1/rubiks_cube/src dist/src
-          cp -r lab1/rubiks_cube/tests dist/tests
-          cp lab1/rubiks_cube/pytest.ini dist/
-          cp lab1/rubiks_cube/conftest.py dist/
+          cp -r lab1/rubiks_cube/src dist/rubiks_cube_src
+          cp -r lab1/rubiks_cube/tests dist/rubiks_cube_tests
+          cp lab1/rubiks_cube/pytest.ini dist/rubiks_cube_pytest.ini
+          cp lab1/rubiks_cube/conftest.py dist/rubiks_cube_conftest.py
+          
+          cp -r lab1/post_machine/src dist/post_machine_src
+          cp -r lab1/post_machine/tests dist/post_machine_tests
+          cp lab1/post_machine/pytest.ini dist/post_machine_pytest.ini
+          cp lab1/post_machine/conftest.py dist/post_machine_conftest.py
+          
           cp requirements.txt dist/
-          cd dist && zip -r ../rubiks_cube.zip .
+          cd dist && zip -r ../lab1_artifacts.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: rubiks_cube
-          path: rubiks_cube.zip
+          name: lab1_artifacts
+          path: lab1_artifacts.zip
 
   release:
     needs: test
@@ -61,11 +76,11 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: rubiks_cube
+          name: lab1_artifacts
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: lab1-${{ github.run_number }}
-          name: Lab 1 - Rubik's Cube (build ${{ github.run_number }})
-          files: rubiks_cube.zip
+          name: Lab 1 - Rubiks Cube & Post Machine (build ${{ github.run_number }})
+          files: lab1_artifacts.zip
