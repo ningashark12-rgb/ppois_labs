@@ -1,0 +1,78 @@
+﻿name: CI
+
+on:
+  push:
+    branches: [main, "feature/**"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint with ruff
+        run: ruff check .
+
+      - name: Run Rubik's Cube tests
+        working-directory: lab1/rubiks_cube
+        run: |
+          pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
+
+      - name: Run Post Machine tests
+        working-directory: lab1/post_machine
+        run: |
+          pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
+
+      - name: Build release artifact
+        run: |
+          mkdir -p dist
+          cp -r lab1/rubiks_cube/src dist/rubiks_cube_src
+          cp -r lab1/rubiks_cube/tests dist/rubiks_cube_tests
+          cp lab1/rubiks_cube/pytest.ini dist/rubiks_cube_pytest.ini
+          cp lab1/rubiks_cube/conftest.py dist/rubiks_cube_conftest.py
+          
+          cp -r lab1/post_machine/src dist/post_machine_src
+          cp -r lab1/post_machine/tests dist/post_machine_tests
+          cp lab1/post_machine/pytest.ini dist/post_machine_pytest.ini
+          cp lab1/post_machine/conftest.py dist/post_machine_conftest.py
+          
+          cp requirements.txt dist/
+          cd dist && zip -r ../lab1_artifacts.zip .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab1_artifacts
+          path: lab1_artifacts.zip
+
+  release:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lab1_artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: lab1-${{ github.run_number }}
+          name: Lab 1 - Rubiks Cube & Post Machine (build ${{ github.run_number }})
+          files: lab1_artifacts.zip
