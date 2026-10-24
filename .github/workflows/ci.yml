@@ -38,7 +38,25 @@ jobs:
 
       - name: Build release artifact
         run: |
-          zip -r lab1_artifacts.zip lab1 requirements.txt
+           # Create a temporary folder for the clean artifact
+           mkdir -p dist/rubiks_cube dist/post_machine
+          
+           # Copy only the source code (excluding __pycache__)
+           cp lab1/rubiks_cube/src/cube.py dist/rubiks_cube/
+           cp lab1/rubiks_cube/src/cube_io.py dist/rubiks_cube/
+           cp lab1/rubiks_cube/src/main.py dist/rubiks_cube/
+          
+           cp lab1/post_machine/src/tape.py dist/post_machine/
+           cp lab1/post_machine/src/rule.py dist/post_machine/
+           cp lab1/post_machine/src/program.py dist/post_machine/
+           cp lab1/post_machine/src/machine.py dist/post_machine/
+           cp lab1/post_machine/src/machine_io.py dist/post_machine/
+           cp lab1/post_machine/src/main.py dist/post_machine/
+          
+           cp requirements.txt dist/
+          
+           # Zip the clean folder
+           cd dist && zip -r ../lab1_artifacts.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
