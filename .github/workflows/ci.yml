@@ -38,19 +38,7 @@ jobs:
 
       - name: Build release artifact
         run: |
-          mkdir -p dist
-          cp -r lab1/rubiks_cube/src dist/rubiks_cube_src
-          cp -r lab1/rubiks_cube/tests dist/rubiks_cube_tests
-          cp lab1/rubiks_cube/pytest.ini dist/rubiks_cube_pytest.ini
-          cp lab1/rubiks_cube/conftest.py dist/rubiks_cube_conftest.py
-          
-          cp -r lab1/post_machine/src dist/post_machine_src
-          cp -r lab1/post_machine/tests dist/post_machine_tests
-          cp lab1/post_machine/pytest.ini dist/post_machine_pytest.ini
-          cp lab1/post_machine/conftest.py dist/post_machine_conftest.py
-          
-          cp requirements.txt dist/
-          cd dist && zip -r ../lab1_artifacts.zip .
+          zip -r lab1_artifacts.zip lab1 requirements.txt
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
