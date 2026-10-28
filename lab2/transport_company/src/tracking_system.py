@@ -3,22 +3,23 @@
 class TrackingSystem:
     """Represents a TrackingSystem."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
+    def __init__(self, active_trackings=None, history=None) -> None:
+        self.active_trackings = active_trackings
+        self.history = history
 
-    def action_1(self) -> None:
+    def start_tracking(self) -> None:
+        """Behavior for TrackingSystem start_tracking."""
         pass
 
-    def action_2(self) -> None:
+    def update_location(self) -> None:
+        """Behavior for TrackingSystem update_location."""
         pass
 
-    def action_3(self) -> None:
+    def stop_tracking(self) -> None:
+        """Behavior for TrackingSystem stop_tracking."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
+    def get_history(self) -> None:
+        """Behavior for TrackingSystem get_history."""
         pass
 

@@ -3,19 +3,23 @@
 class CustomerFeedback:
     """Represents a CustomerFeedback."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
+    def __init__(self, rating=None, comment=None) -> None:
+        self.rating = rating
+        self.comment = comment
 
-    def action_1(self) -> None:
+    def submit(self) -> None:
+        """Behavior for CustomerFeedback submit."""
         pass
 
-    def action_2(self) -> None:
+    def analyze(self) -> None:
+        """Behavior for CustomerFeedback analyze."""
         pass
 
-    def action_3(self) -> None:
+    def respond(self) -> None:
+        """Behavior for CustomerFeedback respond."""
         pass
 
-    def action_4(self) -> None:
+    def escalate(self) -> None:
+        """Behavior for CustomerFeedback escalate."""
         pass
 

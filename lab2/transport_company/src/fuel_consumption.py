@@ -3,18 +3,20 @@
 class FuelConsumption:
     """Represents a FuelConsumption."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, liters_used=None, distance_covered=None, fuel_type=None) -> None:
+        self.liters_used = liters_used
+        self.distance_covered = distance_covered
+        self.fuel_type = fuel_type
 
-    def action_1(self) -> None:
+    def calculate_mpg(self) -> None:
+        """Behavior for FuelConsumption calculate_mpg."""
         pass
 
-    def action_2(self) -> None:
+    def estimate_cost(self) -> None:
+        """Behavior for FuelConsumption estimate_cost."""
         pass
 
-    def action_3(self) -> None:
+    def track_refill(self) -> None:
+        """Behavior for FuelConsumption track_refill."""
         pass
 

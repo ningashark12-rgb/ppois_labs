@@ -3,32 +3,38 @@
 class TransportCompany:
     """Represents a TransportCompany."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
+    def __init__(self, name: str, fleet=None, employees=None, clients=None, orders=None) -> None:
+        self.name = name
+        self.fleet = fleet
+        self.employees = employees
+        self.clients = clients
+        self.orders = orders
 
-    def action_1(self) -> None:
+    def hire_staff(self) -> None:
+        """Behavior for TransportCompany hire_staff."""
         pass
 
-    def action_2(self) -> None:
+    def buy_vehicle(self) -> None:
+        """Behavior for TransportCompany buy_vehicle."""
         pass
 
-    def action_3(self) -> None:
+    def register_client(self) -> None:
+        """Behavior for TransportCompany register_client."""
         pass
 
-    def action_4(self) -> None:
+    def process_order(self) -> None:
+        """Behavior for TransportCompany process_order."""
         pass
 
-    def action_5(self) -> None:
+    def generate_report(self) -> None:
+        """Behavior for TransportCompany generate_report."""
         pass
 
-    def action_6(self) -> None:
+    def pay_salaries(self) -> None:
+        """Behavior for TransportCompany pay_salaries."""
         pass
 
-    def action_7(self) -> None:
+    def calculate_profit(self) -> None:
+        """Behavior for TransportCompany calculate_profit."""
         pass
 

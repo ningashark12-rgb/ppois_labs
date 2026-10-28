@@ -3,24 +3,25 @@
 class Accountant:
     """Represents a Accountant."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, name: str, salary=None, bank_account=None, hire_date=None) -> None:
+        self.name = name
+        self.salary = salary
+        self.bank_account = bank_account
+        self.hire_date = hire_date
 
-    def action_1(self) -> None:
+    def process_payment(self) -> None:
+        """Behavior for Accountant process_payment."""
         pass
 
-    def action_2(self) -> None:
+    def calculate_tax(self) -> None:
+        """Behavior for Accountant calculate_tax."""
         pass
 
-    def action_3(self) -> None:
+    def issue_invoice(self) -> None:
+        """Behavior for Accountant issue_invoice."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
+    def audit_books(self) -> None:
+        """Behavior for Accountant audit_books."""
         pass
 

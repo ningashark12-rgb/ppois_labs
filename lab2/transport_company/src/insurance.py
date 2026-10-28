@@ -3,24 +3,21 @@
 class Insurance:
     """Represents a Insurance."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
+    def __init__(self, policy_number=None, premium=None, coverage_amount=None, expiry_date=None) -> None:
+        self.policy_number = policy_number
+        self.premium = premium
+        self.coverage_amount = coverage_amount
+        self.expiry_date = expiry_date
 
-    def action_1(self) -> None:
+    def file_claim(self) -> None:
+        """Behavior for Insurance file_claim."""
         pass
 
-    def action_2(self) -> None:
+    def calculate_premium(self) -> None:
+        """Behavior for Insurance calculate_premium."""
         pass
 
-    def action_3(self) -> None:
-        pass
-
-    def action_4(self) -> None:
+    def renew_policy(self) -> None:
+        """Behavior for Insurance renew_policy."""
         pass
 

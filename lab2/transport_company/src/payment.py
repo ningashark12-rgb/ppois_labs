@@ -3,24 +3,25 @@
 class Payment:
     """Represents a Payment."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
+    def __init__(self, amount=None, payment_method=None, date=None, is_successful=None) -> None:
+        self.amount = amount
+        self.payment_method = payment_method
+        self.date = date
+        self.is_successful = is_successful
 
-    def action_1(self) -> None:
+    def process_payment(self) -> None:
+        """Behavior for Payment process_payment."""
         pass
 
-    def action_2(self) -> None:
+    def refund(self) -> None:
+        """Behavior for Payment refund."""
         pass
 
-    def action_3(self) -> None:
+    def validate_card(self) -> None:
+        """Behavior for Payment validate_card."""
         pass
 
-    def action_4(self) -> None:
+    def get_receipt(self) -> None:
+        """Behavior for Payment get_receipt."""
         pass
 

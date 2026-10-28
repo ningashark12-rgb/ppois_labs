@@ -3,50 +3,21 @@
 class ExpressDelivery:
     """Represents a ExpressDelivery."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
-        self.field_8 = None
-        self.field_9 = None
-        self.field_10 = None
-        self.field_11 = None
-        self.field_12 = None
+    def __init__(self, speed_priority=None, guaranteed_time=None, extra_fee=None, order=None) -> None:
+        self.speed_priority = speed_priority
+        self.guaranteed_time = guaranteed_time
+        self.extra_fee = extra_fee
+        self.order = order
 
-    def action_1(self) -> None:
+    def upgrade_speed(self) -> None:
+        """Behavior for ExpressDelivery upgrade_speed."""
         pass
 
-    def action_2(self) -> None:
+    def calculate_extra_cost(self) -> None:
+        """Behavior for ExpressDelivery calculate_extra_cost."""
         pass
 
-    def action_3(self) -> None:
-        pass
-
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
-        pass
-
-    def action_7(self) -> None:
-        pass
-
-    def action_8(self) -> None:
-        pass
-
-    def action_9(self) -> None:
-        pass
-
-    def action_10(self) -> None:
-        pass
-
-    def action_11(self) -> None:
+    def track_eta(self) -> None:
+        """Behavior for ExpressDelivery track_eta."""
         pass
 

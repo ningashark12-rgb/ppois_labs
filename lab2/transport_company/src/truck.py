@@ -3,20 +3,23 @@
 class Truck:
     """Represents a Truck."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
+    def __init__(self, max_weight=None, axles=None) -> None:
+        self.max_weight = max_weight
+        self.axles = axles
 
-    def action_1(self) -> None:
+    def start_engine(self) -> None:
+        """Behavior for Truck start_engine."""
         pass
 
-    def action_2(self) -> None:
+    def stop_engine(self) -> None:
+        """Behavior for Truck stop_engine."""
         pass
 
-    def action_3(self) -> None:
+    def load_cargo(self) -> None:
+        """Behavior for Truck load_cargo."""
         pass
 
-    def action_4(self) -> None:
+    def unload_cargo(self) -> None:
+        """Behavior for Truck unload_cargo."""
         pass
 

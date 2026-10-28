@@ -9,3 +9,4 @@ from .vehicle_overload_exception import VehicleOverloadException
 from .vehicle_not_available_exception import VehicleNotAvailableException
 from .driver_not_available_exception import DriverNotAvailableException
 from .invalid_license_exception import InvalidLicenseException
+from .maintenance_required_exception import MaintenanceRequiredException

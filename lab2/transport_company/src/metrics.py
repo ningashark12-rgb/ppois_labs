@@ -3,42 +3,25 @@
 class Metrics:
     """Represents a Metrics."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
-        self.field_8 = None
-        self.field_9 = None
-        self.field_10 = None
+    def __init__(self, total_distance=None, avg_speed=None, fuel_used=None, time_elapsed=None) -> None:
+        self.total_distance = total_distance
+        self.avg_speed = avg_speed
+        self.fuel_used = fuel_used
+        self.time_elapsed = time_elapsed
 
-    def action_1(self) -> None:
+    def calculate_efficiency(self) -> None:
+        """Behavior for Metrics calculate_efficiency."""
         pass
 
-    def action_2(self) -> None:
+    def track_progress(self) -> None:
+        """Behavior for Metrics track_progress."""
         pass
 
-    def action_3(self) -> None:
+    def reset_metrics(self) -> None:
+        """Behavior for Metrics reset_metrics."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
-        pass
-
-    def action_7(self) -> None:
-        pass
-
-    def action_8(self) -> None:
-        pass
-
-    def action_9(self) -> None:
+    def get_summary(self) -> None:
+        """Behavior for Metrics get_summary."""
         pass
 

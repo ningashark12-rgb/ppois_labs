@@ -3,32 +3,24 @@
 class Trailer:
     """Represents a Trailer."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
-        self.field_8 = None
-        self.field_9 = None
+    def __init__(self, max_weight=None, volume=None, number_of_axles=None) -> None:
+        self.max_weight = max_weight
+        self.volume = volume
+        self.number_of_axles = number_of_axles
 
-    def action_1(self) -> None:
+    def attach_to_truck(self) -> None:
+        """Behavior for Trailer attach_to_truck."""
         pass
 
-    def action_2(self) -> None:
+    def detach(self) -> None:
+        """Behavior for Trailer detach."""
         pass
 
-    def action_3(self) -> None:
+    def check_load(self) -> None:
+        """Behavior for Trailer check_load."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
+    def get_capacity(self) -> None:
+        """Behavior for Trailer get_capacity."""
         pass
 

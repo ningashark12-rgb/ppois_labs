@@ -3,34 +3,25 @@
 class StorageUnit:
     """Represents a StorageUnit."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
-        self.field_8 = None
+    def __init__(self, unit_id: str, zone=None, capacity_cubic_meters=None, current_usage=None) -> None:
+        self.unit_id = unit_id
+        self.zone = zone
+        self.capacity_cubic_meters = capacity_cubic_meters
+        self.current_usage = current_usage
 
-    def action_1(self) -> None:
+    def store_cargo(self) -> None:
+        """Behavior for StorageUnit store_cargo."""
         pass
 
-    def action_2(self) -> None:
+    def retrieve_cargo(self) -> None:
+        """Behavior for StorageUnit retrieve_cargo."""
         pass
 
-    def action_3(self) -> None:
+    def check_capacity(self) -> None:
+        """Behavior for StorageUnit check_capacity."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
-        pass
-
-    def action_7(self) -> None:
+    def empty_unit(self) -> None:
+        """Behavior for StorageUnit empty_unit."""
         pass
 

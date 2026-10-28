@@ -3,25 +3,25 @@
 class Employee:
     """Represents a Employee."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
-        self.field_8 = None
+    def __init__(self, name: str, position=None, salary=None, hire_date=None) -> None:
+        self.name = name
+        self.position = position
+        self.salary = salary
+        self.hire_date = hire_date
 
-    def action_1(self) -> None:
+    def work(self) -> None:
+        """Behavior for Employee work."""
         pass
 
-    def action_2(self) -> None:
+    def take_break(self) -> None:
+        """Behavior for Employee take_break."""
         pass
 
-    def action_3(self) -> None:
+    def get_payslip(self) -> None:
+        """Behavior for Employee get_payslip."""
         pass
 
-    def action_4(self) -> None:
+    def resign(self) -> None:
+        """Behavior for Employee resign."""
         pass
 

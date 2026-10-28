@@ -3,25 +3,25 @@
 class Route:
     """Represents a Route."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
+    def __init__(self, start_address=None, end_address=None, distance_km=None, estimated_time=None) -> None:
+        self.start_address = start_address
+        self.end_address = end_address
+        self.distance_km = distance_km
+        self.estimated_time = estimated_time
 
-    def action_1(self) -> None:
+    def calculate_distance(self) -> None:
+        """Behavior for Route calculate_distance."""
         pass
 
-    def action_2(self) -> None:
+    def optimize_for_traffic(self) -> None:
+        """Behavior for Route optimize_for_traffic."""
         pass
 
-    def action_3(self) -> None:
+    def get_eta(self) -> None:
+        """Behavior for Route get_eta."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
+    def add_waypoint(self) -> None:
+        """Behavior for Route add_waypoint."""
         pass
 

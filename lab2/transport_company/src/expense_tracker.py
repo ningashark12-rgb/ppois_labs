@@ -3,19 +3,23 @@
 class ExpenseTracker:
     """Represents a ExpenseTracker."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
+    def __init__(self, total_expenses=None, categories=None) -> None:
+        self.total_expenses = total_expenses
+        self.categories = categories
 
-    def action_1(self) -> None:
+    def add_expense(self) -> None:
+        """Behavior for ExpenseTracker add_expense."""
         pass
 
-    def action_2(self) -> None:
+    def get_total(self) -> None:
+        """Behavior for ExpenseTracker get_total."""
         pass
 
-    def action_3(self) -> None:
+    def categorize(self) -> None:
+        """Behavior for ExpenseTracker categorize."""
         pass
 
-    def action_4(self) -> None:
+    def export_data(self) -> None:
+        """Behavior for ExpenseTracker export_data."""
         pass
 

@@ -3,37 +3,32 @@
 class Order:
     """Represents a Order."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
-        self.field_8 = None
-        self.field_9 = None
-        self.field_10 = None
-        self.field_11 = None
+    def __init__(self, order_id: str, client=None, cargo=None, driver=None, vehicle=None, status=None, price=None) -> None:
+        self.order_id = order_id
+        self.client = client
+        self.cargo = cargo
+        self.driver = driver
+        self.vehicle = vehicle
+        self.status = status
+        self.price = price
 
-    def action_1(self) -> None:
+    def assign_driver(self) -> None:
+        """Behavior for Order assign_driver."""
         pass
 
-    def action_2(self) -> None:
+    def assign_vehicle(self) -> None:
+        """Behavior for Order assign_vehicle."""
         pass
 
-    def action_3(self) -> None:
+    def calculate_price(self) -> None:
+        """Behavior for Order calculate_price."""
         pass
 
-    def action_4(self) -> None:
+    def complete_order(self) -> None:
+        """Behavior for Order complete_order."""
         pass
 
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
-        pass
-
-    def action_7(self) -> None:
+    def cancel_order(self) -> None:
+        """Behavior for Order cancel_order."""
         pass
 

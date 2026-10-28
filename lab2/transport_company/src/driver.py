@@ -3,32 +3,26 @@
 class Driver:
     """Represents a Driver."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
+    def __init__(self, name: str, license=None, is_available=None, experience_years=None, rating=None) -> None:
+        self.name = name
+        self.license = license
+        self.is_available = is_available
+        self.experience_years = experience_years
+        self.rating = rating
 
-    def action_1(self) -> None:
+    def accept_order(self) -> None:
+        """Behavior for Driver accept_order."""
         pass
 
-    def action_2(self) -> None:
+    def decline_order(self) -> None:
+        """Behavior for Driver decline_order."""
         pass
 
-    def action_3(self) -> None:
+    def update_status(self) -> None:
+        """Behavior for Driver update_status."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
-        pass
-
-    def action_7(self) -> None:
+    def get_rating(self) -> None:
+        """Behavior for Driver get_rating."""
         pass
 

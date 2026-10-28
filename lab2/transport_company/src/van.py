@@ -3,21 +3,23 @@
 class Van:
     """Represents a Van."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, max_volume=None, sliding_door=None) -> None:
+        self.max_volume = max_volume
+        self.sliding_door = sliding_door
 
-    def action_1(self) -> None:
+    def open_door(self) -> None:
+        """Behavior for Van open_door."""
         pass
 
-    def action_2(self) -> None:
+    def load_packages(self) -> None:
+        """Behavior for Van load_packages."""
         pass
 
-    def action_3(self) -> None:
+    def deliver_parcel(self) -> None:
+        """Behavior for Van deliver_parcel."""
         pass
 
-    def action_4(self) -> None:
+    def refuel(self) -> None:
+        """Behavior for Van refuel."""
         pass
 

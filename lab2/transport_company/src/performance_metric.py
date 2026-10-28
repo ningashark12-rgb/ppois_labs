@@ -3,18 +3,20 @@
 class PerformanceMetric:
     """Represents a PerformanceMetric."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, metric_name=None, value=None, unit=None) -> None:
+        self.metric_name = metric_name
+        self.value = value
+        self.unit = unit
 
-    def action_1(self) -> None:
+    def update_value(self) -> None:
+        """Behavior for PerformanceMetric update_value."""
         pass
 
-    def action_2(self) -> None:
+    def compare(self) -> None:
+        """Behavior for PerformanceMetric compare."""
         pass
 
-    def action_3(self) -> None:
+    def get_status(self) -> None:
+        """Behavior for PerformanceMetric get_status."""
         pass
 

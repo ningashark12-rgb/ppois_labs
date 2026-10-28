@@ -3,44 +3,24 @@
 class CompanyFinance:
     """Represents a CompanyFinance."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
+    def __init__(self, total_revenue=None, total_expenses=None, tax_rate=None) -> None:
+        self.total_revenue = total_revenue
+        self.total_expenses = total_expenses
+        self.tax_rate = tax_rate
 
-    def action_1(self) -> None:
+    def calculate_profit(self) -> None:
+        """Behavior for CompanyFinance calculate_profit."""
         pass
 
-    def action_2(self) -> None:
+    def generate_report(self) -> None:
+        """Behavior for CompanyFinance generate_report."""
         pass
 
-    def action_3(self) -> None:
+    def apply_tax(self) -> None:
+        """Behavior for CompanyFinance apply_tax."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
-        pass
-
-    def action_7(self) -> None:
-        pass
-
-    def action_8(self) -> None:
-        pass
-
-    def action_9(self) -> None:
-        pass
-
-    def action_10(self) -> None:
-        pass
-
-    def action_11(self) -> None:
-        pass
-
-    def action_12(self) -> None:
+    def forecast(self) -> None:
+        """Behavior for CompanyFinance forecast."""
         pass
 

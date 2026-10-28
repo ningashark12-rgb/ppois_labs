@@ -3,17 +3,20 @@
 class TrafficInfo:
     """Represents a TrafficInfo."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
+    def __init__(self, severity=None, location=None, delay_minutes=None) -> None:
+        self.severity = severity
+        self.location = location
+        self.delay_minutes = delay_minutes
 
-    def action_1(self) -> None:
+    def get_delay(self) -> None:
+        """Behavior for TrafficInfo get_delay."""
         pass
 
-    def action_2(self) -> None:
+    def is_critical(self) -> None:
+        """Behavior for TrafficInfo is_critical."""
         pass
 
-    def action_3(self) -> None:
+    def suggest_alternate(self) -> None:
+        """Behavior for TrafficInfo suggest_alternate."""
         pass
 

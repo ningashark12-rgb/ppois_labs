@@ -3,25 +3,24 @@
 class Machine:
     """Represents a Machine."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
+    def __init__(self, machine_id=None, type=None, status=None) -> None:
+        self.machine_id = machine_id
+        self.type = type
+        self.status = status
 
-    def action_1(self) -> None:
+    def start(self) -> None:
+        """Behavior for Machine start."""
         pass
 
-    def action_2(self) -> None:
+    def stop(self) -> None:
+        """Behavior for Machine stop."""
         pass
 
-    def action_3(self) -> None:
+    def check_status(self) -> None:
+        """Behavior for Machine check_status."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
+    def repair(self) -> None:
+        """Behavior for Machine repair."""
         pass
 

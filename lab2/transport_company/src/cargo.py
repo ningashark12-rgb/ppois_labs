@@ -3,20 +3,21 @@
 class Cargo:
     """Represents a Cargo."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
+    def __init__(self, weight=None, volume=None, description=None, is_fragile=None) -> None:
+        self.weight = weight
+        self.volume = volume
+        self.description = description
+        self.is_fragile = is_fragile
 
-    def action_1(self) -> None:
+    def calculate_cost(self) -> None:
+        """Behavior for Cargo calculate_cost."""
         pass
 
-    def action_2(self) -> None:
+    def validate_weight(self) -> None:
+        """Behavior for Cargo validate_weight."""
         pass
 
-    def action_3(self) -> None:
+    def get_description(self) -> None:
+        """Behavior for Cargo get_description."""
         pass
 

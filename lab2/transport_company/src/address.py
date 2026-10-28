@@ -3,26 +3,25 @@
 class Address:
     """Represents a Address."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
+    def __init__(self, street=None, city=None, zip_code=None, country=None) -> None:
+        self.street = street
+        self.city = city
+        self.zip_code = zip_code
+        self.country = country
 
-    def action_1(self) -> None:
+    def to_string(self) -> None:
+        """Behavior for Address to_string."""
         pass
 
-    def action_2(self) -> None:
+    def validate_address(self) -> None:
+        """Behavior for Address validate_address."""
         pass
 
-    def action_3(self) -> None:
+    def get_gps(self) -> None:
+        """Behavior for Address get_gps."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
+    def distance_to(self) -> None:
+        """Behavior for Address distance_to."""
         pass
 

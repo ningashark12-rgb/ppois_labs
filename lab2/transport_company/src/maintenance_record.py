@@ -3,21 +3,20 @@
 class MaintenanceRecord:
     """Represents a MaintenanceRecord."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
+    def __init__(self, date=None, description=None, cost=None) -> None:
+        self.date = date
+        self.description = description
+        self.cost = cost
 
-    def action_1(self) -> None:
+    def add_note(self) -> None:
+        """Behavior for MaintenanceRecord add_note."""
         pass
 
-    def action_2(self) -> None:
+    def calculate_cost(self) -> None:
+        """Behavior for MaintenanceRecord calculate_cost."""
         pass
 
-    def action_3(self) -> None:
+    def schedule_next(self) -> None:
+        """Behavior for MaintenanceRecord schedule_next."""
         pass
 

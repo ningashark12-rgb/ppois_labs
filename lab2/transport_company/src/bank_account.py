@@ -3,27 +3,25 @@
 class BankAccount:
     """Represents a BankAccount."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, account_number: str, balance=None, owner_name=None, currency=None) -> None:
+        self.account_number = account_number
+        self.balance = balance
+        self.owner_name = owner_name
+        self.currency = currency
 
-    def action_1(self) -> None:
+    def deposit(self) -> None:
+        """Behavior for BankAccount deposit."""
         pass
 
-    def action_2(self) -> None:
+    def withdraw(self) -> None:
+        """Behavior for BankAccount withdraw."""
         pass
 
-    def action_3(self) -> None:
+    def transfer(self) -> None:
+        """Behavior for BankAccount transfer."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
+    def get_balance(self) -> None:
+        """Behavior for BankAccount get_balance."""
         pass
 

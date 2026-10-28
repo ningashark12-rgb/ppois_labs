@@ -3,24 +3,25 @@
 class Dispatcher:
     """Represents a Dispatcher."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, name: str, shift=None, current_orders=None, radio_channel=None) -> None:
+        self.name = name
+        self.shift = shift
+        self.current_orders = current_orders
+        self.radio_channel = radio_channel
 
-    def action_1(self) -> None:
+    def assign_order(self) -> None:
+        """Behavior for Dispatcher assign_order."""
         pass
 
-    def action_2(self) -> None:
+    def call_driver(self) -> None:
+        """Behavior for Dispatcher call_driver."""
         pass
 
-    def action_3(self) -> None:
+    def track_delivery(self) -> None:
+        """Behavior for Dispatcher track_delivery."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
+    def handle_emergency(self) -> None:
+        """Behavior for Dispatcher handle_emergency."""
         pass
 

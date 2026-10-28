@@ -3,31 +3,31 @@
 class Vehicle:
     """Represents a Vehicle."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
-        self.field_8 = None
+    def __init__(self, plate_number: str, brand=None, model=None, year=None, is_available=None, mileage=None) -> None:
+        self.plate_number = plate_number
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.is_available = is_available
+        self.mileage = mileage
 
-    def action_1(self) -> None:
+    def start(self) -> None:
+        """Behavior for Vehicle start."""
         pass
 
-    def action_2(self) -> None:
+    def stop(self) -> None:
+        """Behavior for Vehicle stop."""
         pass
 
-    def action_3(self) -> None:
+    def refuel(self) -> None:
+        """Behavior for Vehicle refuel."""
         pass
 
-    def action_4(self) -> None:
+    def schedule_maintenance(self) -> None:
+        """Behavior for Vehicle schedule_maintenance."""
         pass
 
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
+    def update_mileage(self) -> None:
+        """Behavior for Vehicle update_mileage."""
         pass
 

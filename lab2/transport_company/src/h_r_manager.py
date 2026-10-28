@@ -3,27 +3,25 @@
 class HRManager:
     """Represents a HRManager."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, name: str, department=None, employees=None, budget=None) -> None:
+        self.name = name
+        self.department = department
+        self.employees = employees
+        self.budget = budget
 
-    def action_1(self) -> None:
+    def hire_employee(self) -> None:
+        """Behavior for HRManager hire_employee."""
         pass
 
-    def action_2(self) -> None:
+    def fire_employee(self) -> None:
+        """Behavior for HRManager fire_employee."""
         pass
 
-    def action_3(self) -> None:
+    def evaluate_staff(self) -> None:
+        """Behavior for HRManager evaluate_staff."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
+    def approve_vacation(self) -> None:
+        """Behavior for HRManager approve_vacation."""
         pass
 

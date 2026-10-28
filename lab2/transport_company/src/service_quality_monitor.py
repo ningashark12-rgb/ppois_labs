@@ -3,20 +3,19 @@
 class ServiceQualityMonitor:
     """Represents a ServiceQualityMonitor."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
+    def __init__(self, average_rating=None, total_reviews=None) -> None:
+        self.average_rating = average_rating
+        self.total_reviews = total_reviews
 
-    def action_1(self) -> None:
+    def analyze_feedback(self) -> None:
+        """Behavior for ServiceQualityMonitor analyze_feedback."""
         pass
 
-    def action_2(self) -> None:
+    def flag_issues(self) -> None:
+        """Behavior for ServiceQualityMonitor flag_issues."""
         pass
 
-    def action_3(self) -> None:
-        pass
-
-    def action_4(self) -> None:
+    def report_metrics(self) -> None:
+        """Behavior for ServiceQualityMonitor report_metrics."""
         pass
 

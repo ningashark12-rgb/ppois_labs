@@ -3,26 +3,24 @@
 class Client:
     """Represents a Client."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
+    def __init__(self, name: str, phone=None, email=None) -> None:
+        self.name = name
+        self.phone = phone
+        self.email = email
 
-    def action_1(self) -> None:
+    def place_order(self) -> None:
+        """Behavior for Client place_order."""
         pass
 
-    def action_2(self) -> None:
+    def make_payment(self) -> None:
+        """Behavior for Client make_payment."""
         pass
 
-    def action_3(self) -> None:
+    def get_contact_info(self) -> None:
+        """Behavior for Client get_contact_info."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
+    def update_details(self) -> None:
+        """Behavior for Client update_details."""
         pass
 

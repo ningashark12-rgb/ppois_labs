@@ -3,18 +3,21 @@
 class DrivingLicense:
     """Represents a DrivingLicense."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
+    def __init__(self, number=None, category=None, issue_date=None, expiry_date=None) -> None:
+        self.number = number
+        self.category = category
+        self.issue_date = issue_date
+        self.expiry_date = expiry_date
 
-    def action_1(self) -> None:
+    def is_valid(self) -> None:
+        """Behavior for DrivingLicense is_valid."""
         pass
 
-    def action_2(self) -> None:
+    def renew(self) -> None:
+        """Behavior for DrivingLicense renew."""
         pass
 
-    def action_3(self) -> None:
+    def get_category(self) -> None:
+        """Behavior for DrivingLicense get_category."""
         pass
 

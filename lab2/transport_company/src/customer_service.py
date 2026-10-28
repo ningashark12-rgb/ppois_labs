@@ -3,32 +3,25 @@
 class CustomerService:
     """Represents a CustomerService."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
+    def __init__(self, open_tickets=None, resolved_tickets=None, feedback_score=None, staff=None) -> None:
+        self.open_tickets = open_tickets
+        self.resolved_tickets = resolved_tickets
+        self.feedback_score = feedback_score
+        self.staff = staff
 
-    def action_1(self) -> None:
+    def open_ticket(self) -> None:
+        """Behavior for CustomerService open_ticket."""
         pass
 
-    def action_2(self) -> None:
+    def resolve_ticket(self) -> None:
+        """Behavior for CustomerService resolve_ticket."""
         pass
 
-    def action_3(self) -> None:
+    def rate_service(self) -> None:
+        """Behavior for CustomerService rate_service."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
-        pass
-
-    def action_7(self) -> None:
+    def get_complaints(self) -> None:
+        """Behavior for CustomerService get_complaints."""
         pass
 

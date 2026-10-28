@@ -3,27 +3,25 @@
 class Warehouse:
     """Represents a Warehouse."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
-        self.field_6 = None
-        self.field_7 = None
+    def __init__(self, address=None, capacity=None, current_stock=None, manager=None) -> None:
+        self.address = address
+        self.capacity = capacity
+        self.current_stock = current_stock
+        self.manager = manager
 
-    def action_1(self) -> None:
+    def receive_goods(self) -> None:
+        """Behavior for Warehouse receive_goods."""
         pass
 
-    def action_2(self) -> None:
+    def ship_goods(self) -> None:
+        """Behavior for Warehouse ship_goods."""
         pass
 
-    def action_3(self) -> None:
+    def check_inventory(self) -> None:
+        """Behavior for Warehouse check_inventory."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
+    def optimize_space(self) -> None:
+        """Behavior for Warehouse optimize_space."""
         pass
 

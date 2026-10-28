@@ -3,28 +3,24 @@
 class Manager:
     """Represents a Manager."""
 
-    def __init__(self) -> None:
-        self.field_1 = None
-        self.field_2 = None
-        self.field_3 = None
-        self.field_4 = None
-        self.field_5 = None
+    def __init__(self, name: str, department=None, team_size=None) -> None:
+        self.name = name
+        self.department = department
+        self.team_size = team_size
 
-    def action_1(self) -> None:
+    def assign_task(self) -> None:
+        """Behavior for Manager assign_task."""
         pass
 
-    def action_2(self) -> None:
+    def review_performance(self) -> None:
+        """Behavior for Manager review_performance."""
         pass
 
-    def action_3(self) -> None:
+    def approve_budget(self) -> None:
+        """Behavior for Manager approve_budget."""
         pass
 
-    def action_4(self) -> None:
-        pass
-
-    def action_5(self) -> None:
-        pass
-
-    def action_6(self) -> None:
+    def conduct_meeting(self) -> None:
+        """Behavior for Manager conduct_meeting."""
         pass
 
