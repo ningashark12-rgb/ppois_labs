@@ -36,27 +36,26 @@ jobs:
         run: |
           pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
 
+      - name: Run Lab 2 Transport Company tests
+        working-directory: lab2/transport_company
+        run: |
+          pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
+
       - name: Build release artifact
         run: |
-           # Create a temporary folder for the clean artifact
-           mkdir -p dist/rubiks_cube dist/post_machine
+          mkdir -p dist/lab1 dist/lab2
           
-           # Copy only the source code (excluding __pycache__)
-           cp lab1/rubiks_cube/src/cube.py dist/rubiks_cube/
-           cp lab1/rubiks_cube/src/cube_io.py dist/rubiks_cube/
-           cp lab1/rubiks_cube/src/main.py dist/rubiks_cube/
+          # Copy Lab 1 (Clean)
+          mkdir -p dist/lab1/rubiks_cube dist/lab1/post_machine
+          cp lab1/rubiks_cube/src/*.py dist/lab1/rubiks_cube/
+          cp lab1/post_machine/src/*.py dist/lab1/post_machine/
           
-           cp lab1/post_machine/src/tape.py dist/post_machine/
-           cp lab1/post_machine/src/rule.py dist/post_machine/
-           cp lab1/post_machine/src/program.py dist/post_machine/
-           cp lab1/post_machine/src/machine.py dist/post_machine/
-           cp lab1/post_machine/src/machine_io.py dist/post_machine/
-           cp lab1/post_machine/src/main.py dist/post_machine/
+          # Copy Lab 2 (Clean)
+          mkdir -p dist/lab2/transport_company
+          cp lab2/transport_company/src/*.py dist/lab2/transport_company/
           
-           cp requirements.txt dist/
-          
-           # Zip the clean folder
-           cd dist && zip -r ../lab1_artifacts.zip .
+          cp requirements.txt dist/
+          cd dist && zip -r ../lab1_artifacts.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
