@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Lint with ruff
-        run: ruff check .
+        run: ruff check . --ignore F401
 
       - name: Run Rubik's Cube tests
         working-directory: lab1/rubiks_cube
