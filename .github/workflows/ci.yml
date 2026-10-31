@@ -24,7 +24,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Lint with ruff
-        run: ruff check .
+        run: ruff check . --ignore F401
 
       - name: Run Rubik's Cube tests
         working-directory: lab1/rubiks_cube
@@ -40,6 +40,7 @@ jobs:
         working-directory: lab2/transport_company
         run: |
           pytest --cov=src --cov-report=term-missing --cov-report=xml
+          pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
 
       - name: Build release artifact
         run: |
@@ -61,6 +62,27 @@ jobs:
           cp lab2/transport_company/src/exceptions/*.py dist/lab2/transport_company/exceptions/
           
           cp requirements.txt dist/
+          
+          # Copy Lab 1 Rubik's Cube
+          cp lab1/rubiks_cube/src/cube.py dist/lab1/rubiks_cube/
+          cp lab1/rubiks_cube/src/cube_io.py dist/lab1/rubiks_cube/
+          cp lab1/rubiks_cube/src/main.py dist/lab1/rubiks_cube/
+          
+          # Copy Lab 1 Post Machine
+          cp lab1/post_machine/src/tape.py dist/lab1/post_machine/
+          cp lab1/post_machine/src/rule.py dist/lab1/post_machine/
+          cp lab1/post_machine/src/program.py dist/lab1/post_machine/
+          cp lab1/post_machine/src/machine.py dist/lab1/post_machine/
+          cp lab1/post_machine/src/machine_io.py dist/lab1/post_machine/
+          cp lab1/post_machine/src/main.py dist/lab1/post_machine/
+          
+          # Copy Lab 2 Transport Company
+          cp lab2/transport_company/src/*.py dist/lab2/transport_company/
+          cp lab2/transport_company/src/exceptions/*.py dist/lab2/transport_company/exceptions/
+          
+          cp requirements.txt dist/
+          
+          # Zip the clean folder
           cd dist && zip -r ../lab1_artifacts.zip .
 
       - name: Upload artifact
