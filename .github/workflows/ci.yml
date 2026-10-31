@@ -54,6 +54,18 @@ jobs:
           mkdir -p dist/lab2/transport_company/src/exceptions
           cp lab2/transport_company/src/exceptions/*.py dist/lab2/transport_company/src/exceptions/
           
+          cp -r lab1/rubiks_cube/tests dist/lab1/rubiks_cube/
+          cp -r lab1/post_machine/tests dist/lab1/post_machine/
+          cp -r lab2/transport_company/tests dist/lab2/transport_company/
+          
+          cp lab1/rubiks_cube/pytest.ini dist/lab1/rubiks_cube/
+          cp lab1/post_machine/pytest.ini dist/lab1/post_machine/
+          cp lab2/transport_company/pytest.ini dist/lab2/transport_company/
+          
+          cp lab1/rubiks_cube/conftest.py dist/lab1/rubiks_cube/
+          cp lab1/post_machine/conftest.py dist/lab1/post_machine/
+          cp lab2/transport_company/conftest.py dist/lab2/transport_company/
+          
           cp requirements.txt dist/
           
           cd dist && zip -r ../lab1_artifacts.zip .
