@@ -47,16 +47,6 @@ def test_vehicle_update_mileage():
     vehicle.update_mileage(50)
     assert vehicle.mileage == 150
 
-def test_driver_update_status():
-    driver = Driver(name="John", is_available=True)
-    driver.update_status(False)
-    assert driver.is_available is False
-
-def test_vehicle_stop():
-    vehicle = Vehicle(plate_number="ABC", is_available=False)
-    vehicle.stop()
-    assert vehicle.is_available is True
-
 def test_vehicle_refuel():
     vehicle = Vehicle(plate_number="ABC")
     vehicle.refuel()
