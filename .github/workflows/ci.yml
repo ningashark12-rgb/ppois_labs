@@ -43,26 +43,20 @@ jobs:
 
       - name: Build release artifact
         run: |
-          mkdir -p dist/lab1/rubiks_cube
-          mkdir -p dist/lab1/post_machine
-          mkdir -p dist/lab2/transport_company
-
-          # Copy Lab 1 Rubik's Cube
-          cp lab1/rubiks_cube/src/*.py dist/lab1/rubiks_cube/
+          mkdir -p dist/lab1/rubiks_cube/src
+          mkdir -p dist/lab1/post_machine/src
+          mkdir -p dist/lab2/transport_company/src
           
-          # Copy Lab 1 Post Machine
-          cp lab1/post_machine/src/*.py dist/lab1/post_machine/
+          cp lab1/rubiks_cube/src/*.py dist/lab1/rubiks_cube/src/
+          cp lab1/post_machine/src/*.py dist/lab1/post_machine/src/
           
-          # Copy Lab 2 Transport Company
-          cp lab2/transport_company/src/*.py dist/lab2/transport_company/
-          mkdir -p dist/lab2/transport_company/exceptions
-          cp lab2/transport_company/src/exceptions/*.py dist/lab2/transport_company/exceptions/
+          cp lab2/transport_company/src/*.py dist/lab2/transport_company/src/
+          mkdir -p dist/lab2/transport_company/src/exceptions
+          cp lab2/transport_company/src/exceptions/*.py dist/lab2/transport_company/src/exceptions/
           
           cp requirements.txt dist/
           
-          # Zip everything
-          cd dist
-          zip -r ../lab1_artifacts.zip .
+          cd dist && zip -r ../lab1_artifacts.zip .
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
