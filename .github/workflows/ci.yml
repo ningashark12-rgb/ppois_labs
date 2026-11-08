@@ -64,7 +64,7 @@ jobs:
           
           cp lab1/rubiks_cube/conftest.py dist/lab1/rubiks_cube/
           cp lab1/post_machine/conftest.py dist/lab1/post_machine/
-          cp lab2/transport_company/conftest.py dist/lab2/transport_company/
+          cp lab2/transport_company/conftest.py dist/lab2/transport_company/ || true
           
           cp requirements.txt dist/
           
