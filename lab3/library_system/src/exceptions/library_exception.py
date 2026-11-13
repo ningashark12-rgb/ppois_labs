@@ -1,3 +1,3 @@
 class LibraryException(Exception):
-    """Raised for LibraryException."""
+    """Base exception for the library."""
     pass
