@@ -1,77 +1,72 @@
 # Lab 3: Library Management System
 
+This project implements a large-scale Object-Oriented model for a Library Management System. It demonstrates encapsulation, associations, custom exceptions, and domain logic across 50 classes.
+
 ## Architecture Overview
 
-The system models a modern library with book cataloging, member management, loan processing, and financial tracking.
+The system is divided into several subsystems:
+- **Core Management**: `Library`, `Librarian`, `Member`, `Manager`
+- **Catalog & Items**: `Book`, `Magazine`, `DVD`, `Author`, `Publisher`, `Genre`
+- **Loans & Transactions**: `Loan`, `Reservation`, `Fine`, `Receipt`, `Transaction`
+- **Storage**: `Shelf`, `Section`, `Building`, `Address`
+- **Staff**: `Staff`, `Janitor`, `SecurityGuard`, `ITTechnician`, `Accountant`
+- **Finance**: `FinanceManager`, `Budget`, `ExpenseTracker`, `Report`
+- **Utilities**: `Notification`, `Event`, `Schedule`, `Catalog`, `Database`, `Logger`, `SearchEngine`, `Inventory`, `Procurement`, `Supplier`, `BookBinder`, `Restoration`, `DigitalArchive`, `Volunteer`, `LibraryEvent`, `NotificationService`, `BookCondition`, `LoanHistory`, `MemberCard`, `LibraryCard`
 
 ## Class Blueprint
 
-### 1. Core Management
 | Class | Fields | Methods | Associations |
 |---|---|---|---|
 | Library | 5 | 7 | Member, Book, Staff, Loan |
-| Librarian | 5 | 6 | Loan, Member, Book |
+| Librarian | 4 | 4 | Loan, Member, Book |
 | Member | 5 | 5 | Loan, Reservation, Fine |
-| Manager | 4 | 5 | Librarian, Library |
-
-### 2. Catalog & Items
-| Class | Fields | Methods | Associations |
-|---|---|---|---|
-| Item | 4 | 3 | - |
-| Book | 6 | 5 | Author, Publisher, Genre |
-| Magazine | 4 | 3 | Publisher |
-| DVD | 4 | 3 | - |
-| Author | 3 | 3 | Book |
-| Publisher | 3 | 3 | Book |
-| Genre | 2 | 2 | Book |
-| Review | 3 | 3 | Book, Member |
-| Rating | 2 | 2 | Review |
-
-### 3. Loans & Transactions
-| Class | Fields | Methods | Associations |
-|---|---|---|---|
-| Loan | 5 | 6 | Book, Member, Librarian |
-| Reservation | 4 | 4 | Book, Member |
+| Manager | 3 | 3 | Staff, Library |
+| Book | 6 | 4 | Author, Publisher, Genre |
+| Magazine | 3 | 2 | Publisher |
+| DVD | 2 | 2 | - |
+| Author | 3 | 2 | Book |
+| Publisher | 3 | 2 | Book |
+| Genre | 2 | 1 | Book |
+| Review | 3 | 2 | Book, Member |
+| Rating | 2 | 1 | Review |
+| Loan | 5 | 3 | Book, Member, Librarian |
+| Reservation | 4 | 3 | Book, Member |
 | Fine | 3 | 3 | Member, Loan |
 | Receipt | 3 | 2 | Loan |
-| Transaction | 4 | 3 | - |
-
-### 4. Storage & Location
-| Class | Fields | Methods | Associations |
-|---|---|---|---|
+| Transaction | 3 | 2 | - |
 | Shelf | 3 | 3 | Section |
-| Section | 3 | 3 | Building |
+| Section | 2 | 2 | Building |
 | Building | 3 | 3 | - |
-| Address | 4 | 3 | Building |
-
-### 5. Staff
-| Class | Fields | Methods | Associations |
-|---|---|---|---|
+| Address | 4 | 2 | Building |
 | Staff | 3 | 2 | - |
-| Janitor | 3 | 2 | - |
-| SecurityGuard | 3 | 2 | - |
-| ITTechnician | 3 | 3 | - |
-| Accountant | 3 | 3 | Fine, Receipt |
-
-### 6. Finance & Analytics
-| Class | Fields | Methods | Associations |
-|---|---|---|---|
-| FinanceManager | 3 | 4 | Fine, Receipt |
-| Budget | 3 | 3 | - |
-| ExpenseTracker | 2 | 3 | - |
+| Janitor | 2 | 2 | - |
+| SecurityGuard | 2 | 2 | - |
+| ITTechnician | 2 | 3 | - |
+| Accountant | 2 | 2 | Fine, Receipt |
+| FinanceManager | 2 | 2 | Fine, Receipt |
+| Budget | 3 | 2 | - |
+| ExpenseTracker | 2 | 2 | - |
 | Report | 3 | 2 | Library |
-
-### 7. Utilities & Support
-| Class | Fields | Methods | Associations |
-|---|---|---|---|
-| Notification | 3 | 3 | Member |
-| Event | 3 | 3 | - |
-| Schedule | 3 | 3 | - |
+| Notification | 3 | 2 | Member |
+| Event | 3 | 2 | - |
+| Schedule | 3 | 2 | - |
 | Catalog | 2 | 3 | Book |
 | Database | 2 | 3 | - |
 | Logger | 2 | 2 | - |
-
-*(Note: The table above lists 34 classes. To meet the 50-class requirement, we will auto-generate additional helper classes in the script, but these 34 are the core logical ones).*
+| BookCondition | 2 | 1 | Book |
+| LoanHistory | 1 | 2 | Loan |
+| MemberCard | 2 | 2 | Member |
+| LibraryCard | 2 | 2 | Member |
+| NotificationService | 2 | 2 | Notification |
+| SearchEngine | 2 | 3 | Book |
+| Inventory | 2 | 2 | Book |
+| Procurement | 2 | 2 | Supplier |
+| Supplier | 2 | 2 | Book |
+| BookBinder | 2 | 2 | Book |
+| Restoration | 2 | 2 | Book |
+| DigitalArchive | 2 | 3 | Book |
+| Volunteer | 2 | 2 | Event |
+| LibraryEvent | 2 | 2 | Event |
 
 ## Custom Exceptions (12)
 1. `LibraryException` (Base)
@@ -83,10 +78,9 @@ The system models a modern library with book cataloging, member management, loan
 7. `InvalidBookDataException`
 8. `LoanExpiredException`
 9. `ReservationConflictException`
-9. `StaffNotAvailableException`
-10. `InvalidMemberDataException`
-11. `PaymentFailedException`
-12. `StorageFullException`
+10. `StaffNotAvailableException`
+11. `InvalidMemberDataException`
+12. `PaymentFailedException`
 
 ## Domain Logic Example
-The `Library` class manages the catalog and loans. When a `Member` requests a `Book`, the `Library` checks if the book is available. If not, it suggests a `Reservation`. If the member has unpaid fines, a `FineNotPaidException` is thrown.
+The `Library` class manages the catalog, members, and loans. When a `Member` requests a `Book`, the `Library` checks if the book is available. If the member has unpaid fines, a `FineNotPaidException` is thrown. If the book is already borrowed, a `BookAlreadyBorrowedException` is thrown.
