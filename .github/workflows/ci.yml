@@ -41,35 +41,55 @@ jobs:
         run: |
           pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
 
+      - name: Run Lab 3 Library System tests
+        working-directory: lab3/library_system
+        run: |
+          pytest --cov=src --cov-report=term-missing --cov-report=xml --cov-fail-under=90
+          
       - name: Build release artifact
         run: |
+          # --- LAB 1 ---
           mkdir -p dist/lab1/rubiks_cube/src
           mkdir -p dist/lab1/post_machine/src
-          mkdir -p dist/lab2/transport_company/src
           
           cp lab1/rubiks_cube/src/*.py dist/lab1/rubiks_cube/src/
           cp lab1/post_machine/src/*.py dist/lab1/post_machine/src/
           
-          cp lab2/transport_company/src/*.py dist/lab2/transport_company/src/
-          mkdir -p dist/lab2/transport_company/src/exceptions
-          cp lab2/transport_company/src/exceptions/*.py dist/lab2/transport_company/src/exceptions/
-          
           cp -r lab1/rubiks_cube/tests dist/lab1/rubiks_cube/
           cp -r lab1/post_machine/tests dist/lab1/post_machine/
-          cp -r lab2/transport_company/tests dist/lab2/transport_company/
           
           cp lab1/rubiks_cube/pytest.ini dist/lab1/rubiks_cube/
           cp lab1/post_machine/pytest.ini dist/lab1/post_machine/
-          cp lab2/transport_company/pytest.ini dist/lab2/transport_company/
           
           cp lab1/rubiks_cube/conftest.py dist/lab1/rubiks_cube/
           cp lab1/post_machine/conftest.py dist/lab1/post_machine/
-          cp lab2/transport_company/conftest.py dist/lab2/transport_company/ || true
           
+          # --- LAB 2 ---
+          mkdir -p dist/lab2/transport_company/src
+          mkdir -p dist/lab2/transport_company/src/exceptions
+          
+          cp lab2/transport_company/src/*.py dist/lab2/transport_company/src/
+          cp lab2/transport_company/src/exceptions/*.py dist/lab2/transport_company/src/exceptions/
+          
+          cp -r lab2/transport_company/tests dist/lab2/transport_company/
+          cp lab2/transport_company/pytest.ini dist/lab2/transport_company/
+          cp lab2/transport_company/conftest.py dist/lab2/transport_company/ || true
           cp lab2/transport_company/.coveragerc dist/lab2/transport_company/
           
-          cp requirements.txt dist/
+          # --- LAB 3 ---
+          mkdir -p dist/lab3/library_system/src
+          mkdir -p dist/lab3/library_system/src/exceptions
           
+          cp lab3/library_system/src/*.py dist/lab3/library_system/src/
+          cp lab3/library_system/src/exceptions/*.py dist/lab3/library_system/src/exceptions/
+          
+          cp -r lab3/library_system/tests dist/lab3/library_system/
+          cp lab3/library_system/pytest.ini dist/lab3/library_system/
+          cp lab3/library_system/conftest.py dist/lab3/library_system/ || true
+          cp lab3/library_system/.coveragerc dist/lab3/library_system/
+          
+          # --- FINALIZE ---
+          cp requirements.txt dist/
           cd dist && zip -r ../lab1_artifacts.zip .
 
       - name: Upload artifact
@@ -94,5 +114,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: lab1-${{ github.run_number }}
-          name: Lab 1 & Lab 2 - Complete Artifact (build ${{ github.run_number }})
+          name: Lab 1, Lab 2 & Lab 3 - Complete Artifact (build ${{ github.run_number }})
           files: lab1_artifacts.zip
