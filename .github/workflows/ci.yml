@@ -87,6 +87,11 @@ jobs:
           cp lab3/library_system/pytest.ini dist/lab3/library_system/
           cp lab3/library_system/conftest.py dist/lab3/library_system/ || true
           cp lab3/library_system/.coveragerc dist/lab3/library_system/
+
+          mkdir -p dist/lab4/include dist/lab4/src
+          cp lab4/include/*.hpp dist/lab4/include/
+          cp lab4/src/*.cpp dist/lab4/src/
+          cp lab4/README.md dist/lab4/
           
           # --- FINALIZE ---
           cp requirements.txt dist/
